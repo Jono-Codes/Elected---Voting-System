@@ -1,0 +1,349 @@
+* { margin: 0; padding: 0;
+ box-sizing: border-box;
+
+   }
+
+    /* Page layout */
+    body {
+      font-family: 'Trebuchet MS', sans-serif;
+      background: linear-gradient(135deg, #960000 0%, #380d6b 50%, #960000 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    
+    .container {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+      width: 90%;
+      margin-top: 10vh;
+      height: 80vh;               
+      overflow: hidden;
+      border: 3px solid #374151;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+   
+    .header {
+      background: linear-gradient(135deg, #000000, #0a36af, #000000);
+      color: white;
+      text-align: center;
+      padding: 22px;
+      border-bottom: 3px solid #374151;
+    }
+    .header h1 { font-size: 1.9rem; margin-bottom: 6px; font-weight: 700; letter-spacing: 1px; }
+    .header p  { font-size: 1rem; opacity: 0.95; font-style: italic; }
+
+ 
+    .content {
+      padding: 28px;
+      overflow-y: auto;
+      display: flex;
+      gap: 28px;
+    }
+
+
+    .left {
+      flex: 1.2;
+      max-width: 600px;
+      padding-right: 10px;
+    }
+
+    .right {
+      flex: 0.9;
+      min-width: 320px;
+      background: #ffffff;
+      border-left: 1px solid #e6e6e6;
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; 
+    }
+
+
+    .welcome-hero { margin-bottom: 18px; }
+    .welcome-hero h2 { color: #1e40af; font-size: 1.6rem; margin-bottom: 10px; }
+    .welcome-hero p  { color: #000000; font-size: 0.95rem; line-height: 1.5; }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .feature-card {
+      background: #f8fafc;
+      padding: 16px;
+      border-radius: 10px;
+      text-align: center;
+      border: 2px solid #e5e7eb;
+    }
+    .feature-card .feature-icon { font-size: 1.6rem; margin-bottom: 8px; }
+    .feature-card h3 { color: #1e3a8a; font-size: 1rem; margin-bottom: 6px; }
+    .feature-card p { color: #6b7280; font-size: 0.88rem; }
+
+    .important-notice {
+      background: #fef3cd;
+      border: 2px solid #f59e0b;
+      border-radius: 10px;
+      padding: 14px;
+      margin-top: 10px;
+    }
+    .important-notice h4 { color: #92400e; margin-bottom: 8px; font-size: 1rem; }
+    .important-notice ul { padding-left: 18px; color: #92400e; font-size: 0.9rem; }
+    .important-notice li { margin-bottom: 6px; }
+
+
+    .page { display: none; padding: 6px 2px; }
+    .page.active { display: block; }
+
+    .login-form h3 { color: #1e40af; margin-bottom: 14px; font-size: 1.1rem; }
+    .form-group { margin-bottom: 12px; text-align: left; }
+    .form-group label { display: block; margin-bottom: 6px; font-weight: bold; color: #1e40af; font-size: 0.95rem; }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus {
+      outline: none;
+      border-color: #1e40af;
+      box-shadow: 0 0 0 3px rgba(30,64,175,0.07);
+    }
+
+    .btn {
+      background: linear-gradient(165deg,#000000, #0a36af, #000000);
+      color: white;
+      padding: 12px 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 8px;
+      font-weight: bold;
+    }
+    .btn-secondary {
+      background: #6b7280;
+      margin-top: 8px;
+    }
+    .btn:active { transform: translateY(0); }
+
+    .error { color: #dc2626; margin-top: 6px; font-size: 13px; }
+    .success { color: #16a34a; font-size: 15px; margin-bottom: 10px; }
+
+    .ballot-option {
+      background: #f9fafb;
+      border: 2px solid #d1d5db;
+      border-radius: 10px;
+      padding: 12px;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    .ballot-option:hover {
+      transform: translateY(-3px);
+      border-color: #1e40af;
+    }
+    /* --- Candidate Card Styles (New/Modified) --- */
+    #votingOptions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        padding: 20px 0;
+    }
+    .candidate-card {
+        background: #f9fafb;
+        border: 2px solid #d1d5db;
+        border-radius: 10px;
+        padding: 15px;
+        width: 180px; /* Reduced width to fit more on screen */
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .candidate-card:hover {
+        transform: translateY(-3px);
+        border-color: #1e40af;
+        box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+    }
+    .candidate-card.selected {
+        border-color: #10b981; /* Green border for selection */
+        background: #ecfdf5; /* Light green background */
+        box-shadow: 0 0 0 4px #10b981;
+    }
+
+    /* Candidate Image/Placeholder */
+    .card-image-wrapper {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 10px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .candidate-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .candidate-placeholder {
+        font-size: 40px;
+        color: #6b7280;
+        line-height: 80px;
+    }
+
+    .card-info {
+        flex-grow: 1;
+        width: 100%;
+    }
+    .card-info .candidate-name { 
+        color: #1e40af; 
+        margin-bottom: 4px; 
+        font-size: 1.1rem; 
+        font-weight: bold;
+    }
+    .card-info .candidate-party { 
+        color: #4b5563; 
+        font-size: 0.9rem; 
+        font-style: italic;
+    }
+
+    /* Fixing the original .candidate-card and .candidate-info selector clash */
+    .candidate-info h3, .candidate-info p { margin: 0; }
+    /* End Candidate Card Styles */
+
+
+    .vote-summary {
+      background: #f0f9ff;
+      border: 2px solid #0ea5e9;
+      border-radius: 8px;
+      padding: 12px;
+      margin: 12px 0;
+      text-align: center;
+    }
+    .vote-summary h4 { color: #0ea5e9; margin-bottom: 8px; }
+    #selectedChoice { font-size: 1.2rem; font-weight: bold; color: #1e40af; }
+
+
+    .countdown {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      background: rgba(0,0,0,0.9);
+      color: white;
+      padding: 22px;
+      border-radius: 12px;
+      z-index: 1200;
+      display: none;
+      text-align: center;
+      min-width: 240px;
+    }
+    .countdown.active { display: block; }
+    .countdown-number { font-size: 2.4rem; font-weight: 700; color: #16a34a; }
+
+
+    #liveResultsBar {
+        width: 100%;
+        background: #f9f9f9;
+        border-bottom: 2px solid #ccc;
+        padding: 10px;
+        position: fixed;   
+        top: 0;
+        left: 0;
+        z-index: 1000;
+      }
+      
+      #liveResultsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;  
+        gap: 12px;
+      }
+      
+      .live-bubble {
+          /* Updated bubble appearance */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 45px;
+        max-width: 50px;
+        height: 45px;
+        border-radius: 50%;
+        background: #dbeafe; /* Light blue background */
+        border: 2px solid #1e40af;
+        color: #1e40af; /* Dark blue text */
+        font-size: 0.9rem;
+        font-weight: bold;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        transition: transform 0.2s ease, background 0.2s;
+        margin-left: auto; /* Center with auto margins for better alignment */
+        margin-right: auto;
+      }
+      
+      .live-bubble:hover {
+        transform: scale(1.1);
+        background: #1e40af;
+        color: white;
+      }
+      
+      .live-label {
+        font-size: 0.8rem; /* Smaller font for better fit */
+        text-align: center;
+        margin-top: 3px;
+        width: 80px; /* Limit width for small screens */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+     }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+        .container {
+            grid-template-rows: auto 1fr;
+            width: 95%;
+            height: 90vh;
+        }
+        .content {
+            flex-direction: column;
+            padding: 15px;
+            gap: 15px;
+        }
+        .left, .right {
+            max-width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            border-left: none;
+        }
+        .right {
+            padding-top: 15px;
+            border-top: 1px solid #e6e6e6;
+        }
+        #liveResultsBar {
+            position: relative; /* Not fixed on mobile to scroll with content */
+            top: initial;
+            margin-bottom: 20px;
+        }
+    }

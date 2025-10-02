@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Elected - Online Voting System</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<script src="{% static 'script.js' %}"></script>
+
+</head>
+<body>
+
+<div id="liveResultsBar">
+    <h4>📊 Live Vote Count</h4>
+    <div id="liveResultsContainer"></div>
+  </div>
+  
+  <div class="container" role="main">
+    <div class="header" role="banner">
+      <h1>ELECTED</h1>
+      <p>Election System</p>
+    </div>
+
+    <div class="content">
+
+      <div class="left" aria-hidden="false">
+        <div class="welcome-hero">
+          <h2>Official Election Portal</h2>
+          <p>Authorized access to the official democratic voting system for registered electors.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🔐</div>
+            <h3>Certified Security</h3>
+            <p>Military-grade encryption and multi-layer authentication protocols ensure ballot integrity.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">✓</div>
+            <h3>Verified Authentication</h3>
+            <p>Real-time verification system with transparent audit trails for accountability.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⚖️</div>
+            <h3>Legal Compliance</h3>
+            <p>Compliant with applicable election regulations and accessibility standards.</p>
+          </div>
+        </div>
+
+        <div class="important-notice">
+          <h4>📋 Official Election Guidelines</h4>
+          <ul>
+            <li>Voting period is active during designated election hours</li>
+            <li>Each registered elector permitted one (1) ballot submission</li>
+            <li>Ballots are anonymous and cannot be traced to individual voters</li>
+            <li>Vote records maintained on tamper-evident systems</li>
+            <li>Official results published following poll closure and certification</li>
+          </ul>
+        </div>
+      </div>   
+
+
+
+      <div class="right" aria-live="polite">
+
+        <section id="loginPage" class="page active">
+          <div class="login-form">
+            <h3 id="loginHeading">Authorized Access Portal</h3>
+            <div class="form-group">
+              <label for="username">Voter ID / Username</label>
+              <input id="username" type="text" placeholder="Enter your authorized voter ID" autocomplete="username" />
+            </div>
+
+            <div class="form-group">
+              <label for="password">Authentication Code</label>
+              <input id="password" type="password" placeholder="Enter your secure authentication code" autocomplete="current-password" />
+            </div>
+
+            <div id="loginError" class="error"></div>
+
+            <button id="loginBtn" class="btn" type="button">Access Official Ballot</button>
+            <button id="endSessionBtn" class="btn btn-secondary" type="button" style="display:none;">End Session</button>
+
+          </div>
+        </section>
+
+        <!-- Ballot Page -->
+        <section id="ballotPage" class="page">
+          <h3 id="ballotHeading">Official Ballot Selection</h3>
+          <p>Please select the appropriate ballot for your electoral district</p>
+          <div id="ballotSelection">
+            <div class="ballot-option" data-type="presidential">🏛️ RCL President</div>
+            <div class="ballot-option" data-type="mayoral">🏢 Deputy RCL President</div>
+            <div class="ballot-option" data-type="proposition">📋 Moral Support</div>
+          </div>
+          <button class="btn btn-secondary" id="logoutBtn2" type="button">End Session</button>
+        </section>
+
+        <!-- Voting Page -->
+        <section id="votingPage" class="page">
+          <h3 id="votingHeading">Cast Your Official Ballot</h3>
+          <p id="votingSubtitle">Select your preferred candidate</p>
+          <div id="votingOptions"></div>
+          <div id="voteSummary" class="vote-summary" style="display:none;">
+            <h4>Your Official Selection:</h4>
+            <p id="selectedChoice"></p>
+          </div>
+          <div id="votingError" class="error"></div>
+          <button id="castVoteBtn" class="btn" type="button">Submit Official Ballot</button>
+          <button id="backToBallotBtn" class="btn btn-secondary" type="button">Return to Ballot Selection</button>
+        </section>
+
+        <!-- Success Page -->
+        <section id="successPage" class="page" style="text-align:center;">
+          <h3>✅ Official Ballot Submitted Successfully</h3>
+          <div class="success">Thank you for voting!</div>
+          <p>Your ballot has been securely recorded.</p>
+          <p>Session ends in <span id="countdownTimer">5</span> seconds.</p>
+        </section>
+        <!-- Results Page -->
+        <section id="resultsPage" class="page">
+            <h3>📊 Live Election Results</h3>
+            <div id="resultsContainer"></div>
+            <button id="backToBallotBtn2" class="btn btn-secondary" type="button">Return to Ballot Selection</button>
+            <button id="logoutBtn3" class="btn btn-secondary" type="button">End Session</button>
+        </section>
+  
+      </div>
+    </div>
+  </div>
+
+  <!-- Countdown Overlay -->
+  <div id="countdownOverlay" class="countdown">
+    <h4>Logging out in</h4>
+    <div class="countdown-number" id="countdownDisplay">5</div>
+    <p>Thank you for voting!</p>
+  </div>
+
+</body>
+</html>
