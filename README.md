@@ -1,4 +1,5 @@
-# Elected---Voting-System
+# Elected - Voting-System
+## Run through IDE with Django
 The Elected Voting System is a secure, full-stack online election system. Built with Django, it handles user login, authenticated ballot casting, and real-time result display. With a really slick interface.
 
 This repository contains the source code for the Elected Voting System (the "Software").
